@@ -54,7 +54,7 @@ User.init(
     hooks: {
       // SET UP beforecreate lifecyle hook functionaility
       async beforeCreate(newUserData) {
-        newUserData.password = await bcrypt.hash(userData.password, 10);
+        newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
       },
       // set up beforeUpdate lifecycle "hook" functionality
