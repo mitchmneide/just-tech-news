@@ -70,7 +70,10 @@ router.post('/', withAuth,(req, res) => {
           
               res.json(dbUserData);
             });
-          });     
+          }).catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+          })    
 });
 // login 
 router.post('/login', withAuth,(req, res) => {
@@ -99,7 +102,7 @@ router.post('/login', withAuth,(req, res) => {
   
         res.json({ user: dbUserData, message: 'You are now logged in!' });
       });
-    });
+    });  
   });
   router.post('/logout', withAuth, (req, res) => {
     if(req.session.loggedIn) {
